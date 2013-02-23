@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Angular Infinite Scroll Simple Demo</title>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script src="../src/infinite-scroll.js"></script>
+    <script>
+        var app = angular.module('Demo', ['infiniteScroll']);
+
+        app.controller('VerticleDemo', function ($scope) {
+
+            $scope.items = [];
+            $scope.canLoad = true;
+            $scope.maxItems = 100;
+
+            $scope.addItems = function () {
+                for (var i = 0; i < 10; i++) {
+                    $scope.items.push({name:'item ' + ($scope.items.length + 1)});
+
+                    if ($scope.items.length >= $scope.maxItems) {
+                        $scope.canLoad = false;
+                        return;
+                    }
+                }
+            }
+
+            $scope.reset = function () {
+                $scope.items = [];
+                $scope.canLoad = true;
+                $scope.addItems();
+            }
+
+            $scope.reset();
+        })
+    </script>
+    <style type="text/css">
+        .scroll-loader {
+            background: #f7f7f7;
+            height: 300px;
+            border: 3px solid #d2d2d2;
+            margin-bottom: 20px;
+            overflow: auto;
+            padding: 10px 0;
+        }
+
+        .scroll-loader li {
+            list-style: none;
+            border-bottom: 1px solid #aaa;
+            padding: 5px;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body ng-controller="VerticleDemo" attach-to-window="true">
+<div class="container">
+    <div>
+        <h1>Angular Infinite Scroll Demo</h1>
+
+        <p>Scroll the div to add more elements.</p>
+
+        <div infinite-scroll="addItems()" class="scroll-loader" can-load="canLoad" threshold="100">
+            <ul>
+                <li ng-repeat="item in items">{{item.name}}</li>
+            </ul>
+        </div>
+        <p>Maximum {{maxItems}} items
+            <small>({{items.length}} added)</small>
+            <button ng-click="items=[];canLoad=true;addItems();" class="btn">Reset</button>
+        </p>
+          <p>
+              It is up to you to add server requests and loading indicators. Using the optional "can-load" boolean attribute you can control
+              if the method to add content is called.
+          </p>
+    </div>
+</div>
+</body>
+</html>
