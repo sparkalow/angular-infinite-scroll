@@ -24,13 +24,13 @@
                         return;
                     }
                 }
-            }
+            };
 
             $scope.reset = function () {
                 $scope.items = [];
                 $scope.canLoad = true;
                 $scope.addItems();
-            }
+            };
 
             $scope.reset();
         })
@@ -70,8 +70,7 @@
             <button ng-click="items=[];canLoad=true;addItems();" class="btn">Reset</button>
         </p>
           <p>
-              It is up to you to add server requests and loading indicators. Using the optional "can-load" boolean attribute you can control
-              if the method to add content is called.
+              It is up to you to add server requests and loading indicators.
           </p>
     </div>
 </div>
