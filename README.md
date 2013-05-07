@@ -8,6 +8,7 @@
 
 * **AngularJS v1.0.0+** is currently required.
 * does not require jquery
+
 ## Quick start
 + Include the required libraries (cdn/local)
 
