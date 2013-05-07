@@ -7,7 +7,7 @@
 ### Requirements
 
 * **AngularJS v1.0.0+** is currently required.
-
+* does not require jquery
 ## Quick start
 + Include the required libraries (cdn/local)
 
@@ -42,7 +42,7 @@ The *infinite-scroll* attribute defines the method to call to add items when the
 
 Optional Attributes
 -------
-**threshold** 
+**threshold**
 
 The *threshold* attribute defines the distance in pixels from the bottom of the content to call the infinite-scroll method when the content is scrolled.
 
