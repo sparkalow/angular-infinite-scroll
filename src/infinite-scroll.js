@@ -1,5 +1,5 @@
 angular.module('infiniteScroll', [])
-    .directive('infiniteScroll', function ($window) {
+    .directive('infiniteScroll', [ "$window", function ($window) {
         return {
             link:function (scope, element, attrs) {
                 var offset = parseInt(attrs.threshold) || 0;
@@ -11,5 +11,5 @@ angular.module('infiniteScroll', [])
                     }
                 });
             }
-        }
-    })
+        };
+    }]);
