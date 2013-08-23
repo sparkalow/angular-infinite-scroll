@@ -6,7 +6,7 @@ angular.module('infiniteScroll', [])
                 var e = element[0];
 
                 element.bind('scroll', function () {
-                    if (scope.canLoad && e.scrollTop + e.offsetHeight >= e.scrollHeight - offset) {
+                    if (scope.$eval(attrs.canLoad) && e.scrollTop + e.offsetHeight >= e.scrollHeight - offset) {
                         scope.$apply(attrs.infiniteScroll);
                     }
                 });
